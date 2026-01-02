@@ -1,0 +1,146 @@
+Titre: Attaques DDoS : Techniques, impacts et mesures de protection
+Source:  Cloudflare FR
+Date: 2024
+URL:https://www.cloudflare.com/fr-fr/learning/ddos/what-is-a-ddos-attack/
+Qu'est-ce qu'une attaque DDoS ?
+
+Une attaque par déni de service distribué (DDoS) est une tentative malveillante de perturber le trafic normal d’un serveur, service ou réseau ciblé en submergeant la cible ou son infrastructure environnante avec un flot de trafic Internet.
+
+L'efficacité des attaques DDoS réside dans l'utilisation de plusieurs systèmes informatiques compromis comme sources de trafic hostile. Les machines exploitées peuvent être des ordinateurs et d’autres ressources situées sur le réseau, comme des appareils IdO.
+
+En généralisant, une attaque DDoS ressemble à un embouteillage inattendu qui bloque une autoroute et empêche le trafic normal d’arriver à destination.
+
+Métaphore du trafic des attaques DDoS
+Guide
+5 éléments à prendre en compte lors de l'atténuation des attaques DDoS
+Sécurisez votre infrastructure DNS
+Comment fonctionne une attaque DDoS ?
+Les attaques DDoS sont exécutées avec des réseaux de machines connectées à Internet.
+
+Ces réseaux sont constitués d'ordinateurs et d'autres équipements (tels que des appareils IdO) infectés par un logiciel malveillant qui permet au pirate de les contrôler à distance. Ces dispositifs individuels sont appelés « bots » (ou zombies), et un groupe de bots s'appelle un « botnet ».
+
+Une fois qu'un botnet a été mis en place, le pirate est en mesure de diriger une attaque en envoyant des instructions à distance à chaque bot.
+
+Lorsque le serveur ou le réseau d'une victime est ciblé par le botnet, chaque bot envoie des requêtes à l'adresse IP de la cible, pouvant aller jusqu'à provoquer une saturation du serveur ou du réseau ciblé, et donc un déni de service du trafic normal.
+Mots-clés: DDoS, déni de service, attaque réseau, volumétrie, mitigation
+Catégorie: Sécurité réseau
+Niveau: Intermédiaire
+
+Étant donné que chaque bot est un appareil Internet légitime, il peut être difficile de séparer le trafic d'attaque du trafic normal.
+
+
+Comment identifier une attaque DDoS
+Le symptôme le plus évident d'une attaque DDoS est la lenteur ou l'indisponibilité soudaine d'un site ou d'un service. Toutefois, étant donné que différentes causes (comme un pic de trafic légitime) peuvent créer des problèmes de performances similaires, des investigations plus approfondies sont généralement nécessaires. Les outils d'analyse du trafic peuvent vous aider à repérer certains signes révélateurs d'une attaque DDoS :
+
+Des volumes suspects de trafic provenant d'une seule adresse IP ou d'une seule plage d'adresses IP
+Un flot de trafic provenant d'utilisateurs dont le profil comportemental est identique, même type d'appareil utilisé, même géolocalisation ou même version de navigateur web
+Une augmentation inexpliquée des requêtes vers une seule page ou un seul point de terminaison
+Des modèles de trafic étranges, avec par exemple des pics à des heures inhabituelles de la journée ou des schémas a priori peu naturels (par exemple, un pic toutes les 10 minutes)
+D'autres signes plus spécifiques, variables selon le type d'attaque, peuvent suggérer une attaque DDoS.
+
+Protection contre les attaques DDoS
+Bénéficiez d'une protection contre les attaques DDoS dans toutes les offres Cloudflare
+Essayer l'offre gratuite
+Quels sont les types d'attaques DDoS les plus courants ?
+Les différents types d'attaques DDoS ciblent des composants variables d'une connexion réseau. Afin de comprendre comment les différentes attaques DDoS fonctionnent, il est nécessaire de savoir comment la connexion réseau est établie.
+
+Une connexion réseau sur Internet est constituée de nombreux composants distincts, appelés «couches». Comme c'est le cas lors de la construction d'une maison, des fondations à la toiture, chaque couche du modèle est conçue pour un objectif différent.
+
+Le modèle OSI, illustré ci-dessous, est un cadre conceptuel utilisé pour décrire la connectivité réseau en sept couches distinctes.
+
+Le modèle OSI 7 couches : application, présentation, session, transport, réseau, liaison de données, physique.
+Si la majorité des attaques DDoS consistent à inonder de trafic un appareil ou un réseau cible, il convient toutefois de distinguer trois catégories au sein des attaques. Un attaquant peut utiliser un ou plusieurs vecteurs d'attaque différents, ou appliquer des vecteurs d'attaque selon un cycle potentiellement déterminé par les contre-mesures prises par la cible.
+
+Attaques sur la couche d'application
+Objectif de l'attaque :
+Parfois appelées attaques DDoS de la couche 7 (en référence à la septième couche du modèle OSI), ces attaques ont pour objectif d'épuiser les ressources de la cible afin de créer un déni de service.
+
+Les attaques ciblent la couche où les pages Web sont générées sur le serveur et fournies en réponse aux requêtes HTTP. Une requête HTTP unique ne coûte pas cher à exécuter côté client, mais peut être coûteuse pour le serveur cible qui, pour y répondre, doit souvent charger plusieurs fichiers et exécuter des requêtes de base de données afin de créer une page web.
+
+Il est difficile de se défendre contre les attaques visant la couche 7, car il peut être compliqué de différencier le trafic malveillant du trafic légitime.
+
+Exemple d’attaque de la couche d'application :
+Attaque DDoS par inondation HTTP : plusieurs requêtes GET HTTP de robots vers la victime.
+HTTP flood
+Cette attaque peut être comparée à une situation où l'on actualiserait inlassablement un navigateur web sur de nombreux ordinateurs différents à la fois. Cela donne lieu à un grand nombre de requêtes HTTP qui submergent le serveur, provoquant un déni de service.
+
+Ce type d'attaque peut présenter différents niveaux de complexité.
+
+Les mises en œuvre les plus simples peuvent accéder à une URL avec la même plage d'adresses IP, de référents et d'agents utilisateurs malveillants. Les versions complexes peuvent utiliser un grand nombre d'adresses IP malveillantes, et cibler des URL aléatoires en utilisant des référents et des agents utilisateurs aléatoires.
+
+Attaques protocolaires
+Objectif de l'attaque :
+Les attaques protocolaires, également appelées attaques par épuisement des tables d'état, provoquent une interruption de service en consommant avec excès les ressources des serveurs ou les ressources des équipements réseau tels que les pare-feu et les équilibreurs de charge.
+
+Les attaques protocolaires exploitent des faiblesses des couches 3 et 4 de la pile du protocole pour rendre la cible inaccessible.
+
+Exemple d'attaque protocolaire :
+Exemple d'attaque DDoS par protocole : SYN flood : paquets SYN usurpés
+SYN Flood
+Dans le cas d'une attaque SYN Flood la situation est comparable à celle d'un employé qui travaille dans la réserve et qui reçoit les demandes du comptoir du magasin.
+
+L'employé reçoit une demande, va chercher le paquet et attend une confirmation avant de le transmettre au comptoir. Il reçoit ensuite de nombreuses autres demandes de colis sans confirmation jusqu'à ce qu'il ne puisse plus transporter aucun colis, qu'il soit débordé et que les demandes commencent à rester sans réponse.
+
+Cette attaque exploite la négociation en TCP, la séquence de communication par laquelle deux ordinateurs démarrent une connexion réseau, en envoyant à une cible un grand nombre de paquets SYN de « requêtes de connexion initiale » TCP avec des adresses IP sources usurpées.
+
+La machine cible répond à chaque demande de connexion, puis attend la dernière étape de la négociation, qui n'a jamais lieu, ce qui épuise les ressources de la cible dans le processus.
+
+Attaques volumétriques
+Objectif de l'attaque :
+Cette catégorie d'attaques tente de créer une saturation en consommant toute la bande passante disponible entre la cible et Internet. De grandes quantités de données sont envoyées vers la cible en utilisant une forme d'amplification ou un autre moyen de créer un trafic massif, comme des requêtes provenant d'un botnet.
+
+Exemple d’amplification :
+Exemple d'attaque DDoS par amplification : Amplification des DNS : requêtes DNS usurpées
+Amplification DNS
+Une amplification DNS donne lieu à une situation qui serait celle d'une personne qui appellerait un restaurant et dirait : « Je voudrais un peu de tout, s'il vous plaît. Veuillez me rappeler et me répéter ma commande complète », en donnant comme numéro à rappeler celui de la victime. Avec très peu d'efforts, une réponse longue est générée et envoyée à la victime.
+
+Lorsqu'une requête est envoyée à un serveur DNS ouvert avec une adresse IP usurpée (l'adresse IP de la victime), c'est l'adresse IP cible qui reçoit une réponse du serveur.
+
+Comment atténuer une attaque DDoS ?
+Lorsqu'il s'agit d'atténuer une attaque DDoS, le plus difficile est de différencier le trafic d'attaque du trafic normal.
+
+Par exemple, si un site Web est submergé de demandes de clients pressés de découvrir la nouvelle version d'un produit, interrompre tout le trafic serait une erreur. Si cette entreprise subit une augmentation soudaine du trafic de la part de pirates connus, il est probablement nécessaire de déployer des efforts pour atténuer l'attaque.
+
+Toute la difficulté réside dans le fait qu'il faut distinguer le trafic lié aux clients légitimes du trafic de l'attaque.
+
+Dans l'Internet moderne, le trafic DDoS se présente sous de nombreuses formes. La conception de ce trafic est variable, allant d'attaques à source unique non usurpées à des attaques complexes et multi-vecteurs adaptatives .
+
+Une attaque DDoS multi-vecteurs utilise plusieurs voies d'attaque afin de submerger une cible de différentes manières, en contrant les efforts d'atténuation déployés sur une trajectoire.
+
+Une attaque qui cible plusieurs couches de la pile de protocoles en même temps, telle qu'une amplification DNS (ciblant les couches 3/4) couplée à une attaque HTTP flood (ciblant la couche 7) est un exemple de DDoS multi-vecteurs.
+
+L'atténuation d'une attaque DDoS multi-vecteurs exige des stratégies variées pour contrer différentes trajectoires.
+
+De manière générale, plus une attaque est complexe, plus son trafic risque d'être difficile à distinguer du trafic normal ; l'objectif du pirate est de se fondre autant que possible dans la « masse » du trafic, ce qui rend inefficaces les efforts d'atténuation.
+
+Les tentatives d'atténuation qui impliquent de limiter ou de faire disparaître le trafic sans distinction peuvent provoquer l'élimination du trafic légitime en même temps que le mauvais. De plus l'attaque peut également changer et s'adapter pour contourner les contre-mesures. Afin de surmonter une tentative complexe d'interruption de l'activité, la meilleure solution consiste à travailler en couches.
+
+Routage vers un trou noir
+Une solution qui s'offre à pratiquement tous les administrateurs réseau est de créer une route vers un trou noir et de diriger le trafic vers cette route. Dans sa forme la plus simple, lorsque le filtrage vers le trou noir est mis en œuvre sans critère de restriction spécifique, tout le trafic réseau, qu'il soit légitime ou malveillant, est acheminé vers un trou noir et éliminé du réseau.
+
+Si un site Internet subit une attaque DDoS, le fournisseur d’accès à Internet (FAI) peut se défendre en envoyant tout le trafic du site vers un trou noir. Cette solution n'est pas idéale, car le pirate atteint ainsi son objectif : le réseau devient inaccessible.
+
+Limitation du taux
+La limitation du nombre de requêtes qu'un serveur acceptera sur une certaine période, appelé limitation du taux, est aussi un moyen d'atténuer les attaques par déni de service.
+
+Si la limitation du taux est utile pour ralentir les bots d'extraction de contenu dans leurs tentatives de vol et atténuer les tentatives de connexion par force brute, elle ne suffira pas à elle seule pour gérer efficacement une attaque DDoS complexe.
+
+La limitation du taux reste néanmoins un élément utile dans une stratégie efficace d'atténuation des attaques DDoS. Pour en savoir plus sur la limitation du taux de Cloudflare
+
+Pare-feu d'applications web (WAF)
+Un pare-feu applicatif web (WAF) est un outil qui contribue à l'atténuation d'une attaque DDoS visant la couche 7. En plaçant un WAF entre Internet et un serveur d'origine, le WAF peut agir comme un proxy inverse, protégeant le serveur ciblé contre certains types de trafics malveillants.
+
+Il est possible d'empêcher les attaques visant la couche 7 en filtrant les requêtes sur la base d'une série de règles servant à identifier des outils DDoS.Un atout majeur d'un WAF efficace est sa capacité à mettre en œuvre rapidement des règles personnalisées en réponse à une attaque. Obtenez plus d'informations sur le WAF de Cloudflare.
+
+Diffusion sur le réseau Anycast
+Cette approche d'atténuation utilise un réseau Anycast pour disperser le trafic d'attaque à travers un réseau de serveurs distribués jusqu'au moment où le trafic est absorbé par le réseau.
+
+À l'image de la canalisation d'une rivière en crue vers différents canaux plus petits, cette approche permet de répartir l'impact du trafic d'attaque distribué au point où il devient gérable, en diffusant sa capacité perturbatrice.
+
+La fiabilité d’un réseau Anycast pour atténuer une attaque DDoS dépend de l'ampleur de l'attaque ainsi que des dimensions et de l'efficacité du réseau. Une part importante de l'atténuation des attaques DDoS mise en œuvre par Cloudflare est obtenue grâce à l'utilisation d'un réseau distribué Anycast.
+
+Cloudflare dispose d'un réseau de 449 Tbps, soit un ordre de grandeur supérieur à la plus grande attaque DDoS jamais enregistrée.
+
+Si vous êtes attaqué, vous pouvez prendre des mesures pour réduire la pression de l'attaque. Si vous êtes déjà client Cloudflare, vous pouvez suivre ces étapes pour atténuer votre attaque.
+
+La protection DDoS mise en œuvre par Cloudflare est multiforme afin d'atténuer le plus de vecteurs d'attaque possible. Découvrez plus en détails la protection DDoS de Cloudflare et son fonctionnement.

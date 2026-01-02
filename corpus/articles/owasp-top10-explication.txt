@@ -1,0 +1,77 @@
+Titre: Explication détaillée de l'OWASP Top 10 2021
+Source: Cloudflare Learning + OWASP.org
+Date: 2024
+URL:https://www.cloudflare.com/fr-fr/learning/security/threats/owasp-top-10/
+Qu'est-ce qu'OWASP ?
+Open Web Application Security Project (OWASP) est une organisation internationale à but non lucratif dédiée à la sécurité des applications web. L'un des principes fondamentaux d'OWASP est de rendre tous ses documents librement disponibles et facilement accessibles sur son site web, permettant à chacun d'améliorer la sécurité de ses propres applications web. Les ressources proposées par OWASP comprennent de la documentation, des outils, des vidéos et des forums. Le projet le plus connu d'OWASP est sans doute le classement OWASP Top 10.
+
+Qu'est-ce que le classement OWASP Top 10 ?
+Le classement OWASP Top 10 est un rapport régulièrement mis à jour qui identifie les problèmes de sécurité liés aux applications web, en se concentrant sur les 10 risques les plus critiques. Ce rapport est rédigé par une équipe d'experts de la sécurité du monde entier. OWASP considère le classement Top 10 comme un « document de sensibilisation » et recommande à toutes les entreprises d'intégrer ce rapport dans leurs processus afin de minimiser et/ou d'atténuer les risques de sécurité.
+
+Protection par pare-feu WAF
+Défendez-vous contre techniques d'attaque du classement Top 10
+En savoir plus
+Vous trouverez ci-dessous les risques de sécurité signalés dans l'édition 2021 du rapport OWASP Top 10.
+
+1. Broken Access Control (défaillance du contrôle des accès)
+Le contrôle des accès désigne un système permettant de contrôler l'accès à des informations ou des fonctionnalités Des contrôles d'accès défaillants permettent à des acteurs malveillants de contourner les autorisations et d'effectuer des tâches comme s'ils étaient des utilisateurs privilégiés, comme des administrateurs. Par exemple, une application web pourrait permettre à un utilisateur de changer le compte avec lequel il se connecte simplement en modifiant une partie de l'URL, sans aucune autre vérification.
+
+Il est possible de sécuriser les contrôles d'accès en s'assurant qu'une application web utilise des jetons d'autorisation* et impose des contrôles stricts de ces derniers.
+
+*De nombreux services émettent des jetons d'autorisation lorsque les utilisateurs se connectent. Chaque requête privilégiée effectuée par un utilisateur nécessite la présence du jeton d'autorisation. Il s'agit d'un moyen sécurisé permettant d'assurer que l'utilisateur est bien celui qu'il prétend être, sans devoir continuellement re-saisir ses identifiants de connexion.
+
+2. Cryptographic Failures (échecs liés à la cryptographie)
+Si les applications web ne protègent pas les données sensibles, telles que les informations financières et les mots de passe, avec le chiffrement, des acteurs malveillants peuvent accéder à ces données et les revendre ou les utiliser à des fins préjudiciables. Ils peuvent également dérober des informations sensibles en exécutant une attaque de l'homme du milieu.
+
+Le risque d'exposition de données peut être limité par le chiffrement de l'ensemble des données sensibles, l'authentification de toutes les transmissions et la désactivation de la mise en cache* de toute information sensible. Par ailleurs, les développeurs d'applications web doivent s'assurer de ne pas stocker inutilement des données sensibles.
+
+*La mise en cache est la pratique consistant à stocker temporairement des données en vue de leur réutilisation. Par exemple, les navigateurs Internet mettent souvent en cache des pages web, de sorte que, si un utilisateur consulte à nouveau ces pages dans un délai déterminé, le navigateur n'a pas besoin d'aller les récupérer sur le web.
+
+3. Injection
+Les attaques par injection consistent à envoyer des données non fiables à un interpréteur de code via un formulaire ou tout autre moyen permettant d'envoyer des données à une application web. Par exemple, un acteur malveillant pourrait saisir du code de base de données SQL dans un formulaire qui attend un nom d'utilisateur en texte clair. Si les données de ce formulaire ne sont pas correctement sécurisées, le code SQL sera exécuté. Cette technique est appelée attaque par injection SQL.
+
+La catégorie Injection comprend également les attaques de type Cross-site Scripting (XSS), qui constituaient auparavant une catégorie à part entière dans l'édition 2017 du rapport. Les stratégies d'atténuation des attaques Cross-site Scripting comprennent l'échappement des requêtes HTTP non fiables, ainsi que l'utilisation de frameworks de développement web modernes, tels que ReactJS et Ruby on Rails, qui offrent une protection intégrée contre les attaques Cross-site Scripting.
+
+En règle générale, les attaques de type Injection peuvent être évitées en validant et/ou en assainissant les données envoyées par les utilisateurs. (La validation consiste à refuser les données suspectes, tandis que l'assainissement consiste à supprimer les parties suspectes des données.) Par ailleurs, un administrateur de base de données peut mettre en place des contrôles permettant de minimiser la quantité d'informations pouvant être exposées par une attaque par injection.
+
+Découvrez comment prévenir les attaques par injection SQL.
+
+4. Insecure Design (conception non sécurisée)
+Les risques de la catégorie Insecure Design réunissent une série de faiblesses pouvant faire partie intégrante de l'architecture d'une application. Cette catégorie se concentre sur la conception d'une application, et non sur sa mise en œuvre. OWASP cite l'utilisation de questions de sécurité (par exemple, « Dans quelle rue avez-vous grandi ? ») pour la récupération de mots de passe comme un exemple de processus intrinsèquement non sécurisé. Même si ce processus est parfaitement mis en œuvre par ses développeurs, l'application restera vulnérable, car plusieurs personnes peuvent connaître la réponse à ces questions de sécurité.
+
+La modélisation des menaces en amont du déploiement d'une application peut contribuer à atténuer ces types de vulnérabilités.
+
+5. Security Misconfiguration (configuration de sécurité incorrecte)
+Les vulnérabilités de la catégorie Security Misconfiguration sont les vulnérabilités les plus courantes de la liste. Elles résultent souvent de l'utilisation de configurations par défaut ou de messages d'erreur trop détaillés. Une application peut, par exemple, afficher des messages d'erreur trop descriptifs, au risque de révéler des vulnérabilités dans l'application. Ce problème peut être atténué en supprimant toutes les fonctionnalités inutilisées dans le code et en créant des messages d'erreur plus généraux.
+
+La catégorie Security Misconfiguration inclut l'attaque XML External Entities (XEE), qui constituait une catégorie à part entière dans l'édition 2017 du rapport. Il s'agit d'une attaque contre une application web, consistant à analyser les entrées XML*. Ces entrées peuvent faire référence à une entité externe pour tenter d'exploiter une vulnérabilité de l'analyseur. Dans ce contexte, une « entité externe » fait référence à une unité de stockage, comme un disque dur. Un analyseur XML peut être utilisé à mauvais escient pour envoyer des données à une entité externe non autorisée, qui peut transmettre des données sensibles directement à un acteur malveillant. Les meilleurs moyens de prévenir les attaques XEE consistent à faire en sorte que les applications web acceptent un type de données moins complexe, comme JSON, ou, tout au moins, à appliquer les correctifs de sécurité aux analyseurs XML et à désactiver l'utilisation d'entités externes dans une application XML.
+
+*XML (Extensible Markup Language) est un langage de balisage conçu pour être lisible à la fois par l'homme et par les ordinateurs. En raison de sa complexité et de ses failles de sécurité, son utilisation dans de nombreuses applications web est aujourd'hui progressivement abandonnée.
+
+6. Vulnerable and Outdated Components (composants vulnérables et obsolètes)
+De nombreux développeurs web modernes utilisent des composants tels que des bibliothèques et des frameworks dans leurs applications web. Ces composants sont des applications logicielles qui aident les développeurs à éviter les tâches redondantes et fournissent les fonctionnalités nécessaires. On peut notamment citer les frameworks front-end, tels que React, et les petites bibliothèques utilisées pour ajouter des icônes de partage ou exécuter des tests A/B. Certains acteurs malveillants recherchent, dans ces composants, des vulnérabilités qu'ils peuvent ensuite exploiter pour orchestrer des attaques. Certains des composants les plus populaires sont utilisés sur des centaines de milliers de sites web ; un acteur malveillant qui découvre une faille de sécurité dans l'un de ces composants pourrait exposer des centaines de milliers de sites vulnérables à une exploitation.
+
+Les développeurs de composants proposent souvent des correctifs de sécurité et des mises à jour afin de remédier aux vulnérabilités connues, mais les développeurs d'applications web ne disposent pas toujours des correctifs de sécurité ou des versions les plus récentes des composants exécutés sur leurs applications. Pour minimiser le risque d'exécuter des composants présentant des vulnérabilités connues, les développeurs doivent supprimer les composants inutilisés de leurs projets et s'assurer d'obtenir des composants mis à jour, provenant d'une source fiable.
+
+7. Identification and Authentication Failures (échecs liés à l'identification et à l'authentification)
+Les vulnérabilités liées aux systèmes d'authentification (ou de connexion) peuvent permettre à des acteurs malveillants d'accéder à des comptes d'utilisateurs et même de compromettre l'ensemble d'un système depuis un compte administrateur. Par exemple, un acteur malveillant peut se procurer une liste contenant des milliers de combinaisons de nom d'utilisateur et de mot de passe connues, obtenues lors d'une violation de données, et exécuter un script afin d'essayer toutes ces combinaisons sur un système de connexion, afin de voir si certaines sont valides.
+
+Certaines stratégies d'atténuation des vulnérabilités liées à l'authentification consistent à exiger une authentification à deux facteurs (2FA), ainsi qu'à limiter ou à espacer les tentatives de connexion répétées en utilisant le contrôle du volume des requêtes.
+
+8. Software and Data Integrity Failures (échecs liés à l'intégrité des logiciels et des données)
+Les fonctionnalités de nombreuses applications dépendent aujourd'hui de plugins tiers et d'autres sources externes ; or, ces applications ne vérifient pas toujours que les mises à jour et les données provenant de ces sources n'ont pas été altérées et proviennent bien de l'emplacement attendu. Par exemple, une application qui accepte automatiquement les mises à jour provenant d'une source externe pourrait être vulnérable à des mises à jour hostiles importées par un acteur malveillant, qui seraient ensuite distribuées à toutes les installations de cette application. Cette catégorie comprend également les exploitations par désérialisation non sécurisée : ces attaques découlent de la désérialisation de données provenant de sources non fiables et peuvent avoir des conséquences graves, telles que des attaques DDoS et des attaques par exécution de code à distance.
+
+Pour s'assurer que l'intégrité des données et des mises à jour n'a pas été compromise, les développeurs d'applications doivent utiliser des signatures numériques pour vérifier les mises à jour, contrôler leurs chaînes d'approvisionnement logicielles et s'assurer que les pipelines d'intégration continue/de déploiement continu (CI/CD) intègrent un contrôle des accès rigoureux et sont correctement configurés.
+
+9. Security Logging and Monitoring Failures (défaillances liées à la journalisation et la surveillance de la sécurité)
+De nombreuses applications web prennent des dispositions insuffisantes pour détecter les violations de données. Le délai moyen de détection d'une violation est d'environ 200 jours après qu'elle s'est produite, laissant amplement le temps à des acteurs malveillants de causer des dommages considérables avant qu'une réponse ne soit apportée à la violation de données. OWASP recommande aux développeurs web de mettre en place des systèmes de journalisation et de surveillance, ainsi que des plans de réponse aux incidents, afin de s'assurer qu'ils sont informés des attaques contre leurs applications.
+
+10. Server-Side Request Forgery (falsification de requêtes côté serveur)
+Les attaques par falsification de requêtes côté serveur (Server-Side Request Forgery, SSRF) consistent à adresser une requête d'URL à un serveur afin de déclencher le téléchargement d'une ressource inattendue, même si cette ressource est protégée. Un acteur malveillant peut, par exemple, envoyer une requête pour www.example.com/super-secret-data/, même si cet emplacement n'est normalement pas accessible aux internautes, et ainsi, accéder à des données super secrètes concernant la réponse du serveur.
+
+Il existe un certain nombre de mesures permettant d'atténuer les attaques SSRF, et l'une des plus importantes consiste à valider toutes les URL provenant de clients. Les URL non valides ne doivent pas entraîner de réponse directe et brute de la part du serveur.
+
+Pour un regard plus technique et plus approfondi sur le classement OWASP Top 10, consultez le rapport officiel.
+Mots-clés: OWASP, Top 10, sécurité applicative, vulnérabilités web
+Catégorie: Standards et frameworks
+Niveau: Tous niveaux

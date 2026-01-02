@@ -1,0 +1,15 @@
+<div class="results">
+    <h2>Résultats pour : "{{ requete }}"</h2>
+    <ul>
+        {% for r in resultats %}
+        <li>
+            <a href="{{ url_for('ouvrir_fichier', chemin=r.chemin) }}" target="_blank">
+                {{ r.titre }}
+            </a>
+            | score : {{ r.score }}
+            <br>
+            <span class="chemin">{{ r.chemin }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

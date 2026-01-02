@@ -1,0 +1,69 @@
+Titre: Techniques avancées de phishing et méthodes de protection
+Source: Cloudflare Learning
+Date: 2024
+URL: https://www.cloudflare.com/learning/access-management/phishing-attack/
+Qu'est-ce qu'une attaque par phishing ?
+Le « phishing » désigne une tentative visant à dérober des informations sensibles (généralement, des noms d'utilisateur, des mots de passe, des numéros de carte de paiement, des informations bancaires ou d'autres données importantes) avec l'objectif d'utiliser ou de revendre les informations volées. En se faisant passer pour une source réputée fiable, un acteur malveillant adresse une demande à sa victime afin de la piéger, de la même manière qu'un pêcheur utilise un appât pour attraper un poisson.
+
+Une attaque par phishing
+Comment se déroule une attaque par phishing ?
+Les exemples de phishing les plus courants sont utilisés en soutien à d’autres actions malveillantes, telles que l’usurpation de compte, les attaques par rançongiciel ou la compromission d’e-mails professionnels. Historiquement, les attaques par phishing se produisaient généralement par e-mail ou par message instantané. Aujourd’hui, les attaques par phishing se produisent sur divers supports, allant des SMS aux appels téléphoniques et aux codes QR.
+
+Les acteurs malveillants ont le choix entre différentes tactiques pour rendre leurs tentatives de phishing plus efficaces :
+
+Recherche, achat ou extraction de coordonnées connues
+Configuration de faux sites web et d'applications imitant des sites web et applications authentiques
+Utilisation de techniques comme le DNS à flux rapide (« fast-flux DNS ») pour masquer leurs serveurs d'hébergement
+Utilisation de l'usurpation de domaine et de l'usurpation d'adresse e-mail pour donner une apparence légitime aux messages
+Manipulation de liens, afin que les URL mentionnées dans les messages de phishing paraissent correctes
+Envoi d'e-mails depuis une infrastructure de confiance, capable de passer les contrôles et franchir les filtres anti-spam
+Utilisation de l'IA générative pour créer rapidement des messages réalistes et sans erreurs
+La plupart des attaques par phishing peuvent être réparties en quelques catégories générales. Il peut être utile de se familiariser avec quelques-uns des différents vecteurs d'attaques par phishing, afin de pouvoir les repérer dans des conditions réelles.
+
+Escroquerie par contrefaçon de site web
+Ce type d'escroquerie est généralement associé à d'autres tentatives de supercherie, telles que l'escroquerie à la désactivation de compte (voir ci-dessous). Dans cette attaque, l'acteur malveillant crée un site web pratiquement identique au site web légitime d'une entreprise que la victime utilise, comme le site d'une banque. Lorsque l'utilisateur accède à la page par un moyen quelconque, que ce soit suite à une tentative de phishing par e-mail, après avoir cliqué sur un lien hypertexte dans un forum ou depuis un moteur de recherche, la victime est dirigée sur un site web qu'elle pense être le site légitime, alors qu'il s'agit en réalité d'une copie frauduleuse. Toutes les informations saisies par la victime sont alors collectées à des fins de revente ou d'autres utilisations malveillantes.
+
+Au début de l'Internet, ces copies de pages étaient assez faciles à repérer, en raison de la mauvaise qualité de leur réalisation. Aujourd'hui, les sites frauduleux ressemblent parfois à une reproduction parfaite de l'original.
+
+Vérifier l'URL affichée dans le navigateur web peut permettre de détecter la fraude. Si l'URL semble différente de l'URL habituelle, elle doit être considérée comme très suspecte. Si la page est répertoriée comme non sécurisée et le protocole HTTPS n'est pas activé, cela constitue un signal d'alarme et garantit, presque à coup sûr, que le site est défaillant ou est une plateforme d'attaque par phishing.
+
+Toutefois, les acteurs malveillants peuvent utiliser l'usurpation de domaine pour imiter de près l'URL réelle du site web. Ils peuvent également utiliser des méthodes telles que le détournement de domaine pour s'emparer de l'adresse réelle du site web. Même les utilisateurs les plus avertis peuvent être dupés ; il est donc parfois judicieux de contacter la source présumée de l'e-mail (par exemple, en appelant le service clientèle de la banque) afin de vérifier que le message contenant le lien vers la page web est légitime.
+
+Escroquerie à la désactivation de compte
+En jouant sur l'urgence créée chez une victime qui pense qu'un compte important va être désactivé, les acteurs malveillants peuvent duper certaines personnes et les inciter à communiquer des informations importantes, comme leurs identifiants de connexion. Prenons l'exemple suivant : un acteur malveillant envoie un e-mail qui semble provenir d'une institution d'importance, comme une banque. Cet e-mail prétend que le compte bancaire de la victime va être désactivé si celle-ci ne réagit pas rapidement. L'acteur malveillant demande alors l'identifiant et le mot de passe du compte bancaire de la victime, afin d'en empêcher la désactivation. Dans une version plus sophistiquée de cette attaque, une fois les informations saisies, la victime est dirigée vers le site web légitime de la banque, afin que l'illusion soit parfaite.
+
+Pour contrer ce type d'attaque, il suffit de se rendre directement sur le site web du service en question et de vérifier si le prestataire légitime informe l'utilisateur d'une mesure urgente à prendre concernant son compte. Il est également judicieux de vérifier la barre d'adresse URL, afin de s'assurer que le site web est sécurisé. Tout site web demandant un identifiant et un mot de passe alors alors qu'il n'est pas sécurisé doit être considéré comme suspect et, presque sans exception, ne doit pas être utilisé.
+
+Fraude par avance de fonds
+Cette attaque courante par phishing a été popularisée par le célèbre e-mail dit du « prince nigérian », dans lequel un prétendu prince nigérian dans une situation désespérée propose d'offrir à la victime une importante somme d'argent en échange du versement à l'avance d'une petite commission. Bien entendu, une fois que la victime a payé l'avance demandée, l'importante somme promise n'arrive jamais. Il est intéressant de noter que ce type d'escroquerie est connue depuis plus d'un siècle sous différentes formes. À la fin du XIXe siècle, une malversation de ce type était déjà connue sous le nom « d'escroquerie du prisonnier espagnol », dans laquelle un escroc contactait une victime en abusant de sa cupidité et de sa compassion. L'escroc prétendait tenter de faire évader un riche prisonnier espagnol, qui aurait généreusement récompensé la victime en échange de l'argent nécessaire pour soudoyer des gardiens de prison.
+
+Le meilleur moyen d'atténuer cette attaque, quelle que soit sa forme, consiste à ne pas répondre aux demandes de personnes inconnues sollicitant de l'argent en échange d'un service ou autre. Si une offre semble trop alléchante pour être vraie, c'est probablement le cas. Une simple recherche Google sur le sujet de la demande ou une partie du texte permet souvent de révéler les détails de l'escroquerie. Les filtres anti-spam peuvent également être entraînés à détecter ces types d'e-mails.
+
+Comment les attaques par phishing s'intègrent-elles dans les campagnes d'attaques de plus grande ampleur ?
+Certaines attaques par phishing visent simplement à collecter des informations privées auprès du plus grand nombre de personnes possible. Les acteurs malveillants peuvent ensuite utiliser ces informations pour prendre le contrôle de comptes d'utilisateurs ou usurper leurs identités. Ils peuvent également revendre ces informations au plus offrant sur les marchés illicites du darknet.
+
+D'autres attaques de phishing s'inscrivent dans le cadre d'initiatives plus larges menées par des groupes appelés « Advanced Persistent Threat » (APT). Une menace APT qui souhaite accéder aux informations confidentielles d'une entreprise, infecter une entreprise avec un rançongiciel ou compromettre l'entreprise de quelque autre manière peut commencer par lancer une campagne de phishing qui lui permettra d'accéder à un compte appartenant à un collaborateur de l'entreprise. Une fois ce point d'entrée établi, différentes techniques permettent à l'acteur malveillant de pénétrer plus profondément dans le réseau de l'entreprise (ce processus est appelé mouvement latéral). De nombreuses cyberattaques notoires ont commencé par des e-mails de phishing relativement simples.
+
+Qu'est-ce que le spear phishing ?
+Ce type de campagne de phishing cible des individus ou des entreprises spécifiques, d'où le terme de phishing ciblé. En collectant des informations détaillées ou en achetant des informations sur une cible particulière, un acteur malveillant peut monter une escroquerie personnalisée. Il s'agit actuellement du type de phishing le plus efficace.
+
+Qu'est-ce que le clone phishing ?
+Le clone phishing consiste à imiter un e-mail légitime précédemment envoyé et à modifier les liens ou les pièces jointes qu'il contient, afin d'inciter la victime à consulter un site web ou un fichier malveillant. Ici, des acteurs malveillants détournent un e-mail et joignent à celui-ci un fichier malveillant portant le même nom que la pièce jointe d'origine. Ils renvoient ensuite l'e-mail depuis une adresse e-mail usurpée, qui semble être celle de l'expéditeur d'origine, afin d'exploiter la confiance suscitée par la communication initiale, et ainsi, inciter la victime à agir.
+
+Qu'est-ce que le whaling ?
+Pour les attaques qui ciblent spécifiquement les dirigeants ou d'autres utilisateurs privilégiés au sein des entreprises, le terme « whaling » est couramment utilisé. Ces attaques sont généralement ciblées et reposent sur un contenu susceptible d'attirer efficacement l'attention de la victime, comme une citation à comparaître ou d'autres problèmes administratifs.
+
+L'envoi d'e-mails frauduleux semblant provenir d'un dirigeant d'entreprise constitue un autre vecteur courant des attaques de type « whaling ». Un exemple courant est un e-mail provenant du directeur général d'une entreprise, adressé à un membre du service financier, lui demandant son aide immédiate pour effectuer un transfert de fonds. Le collaborateur occupant une position moins élevée dans la hiérarchie de l'entreprise peut penser que l'importance de la demande et la personne dont elle émane l'emportent sur la nécessité de vérifier l'authenticité de la demande, et ainsi, être incité à transférer des sommes importantes à un acteur malveillant.
+
+Phishing sur plusieurs canaux
+Des acteurs malveillants disposant de ressources suffisantes peuvent mener des campagnes de phishing sur plusieurs canaux à la fois. Au lieu de se contenter d'envoyer des e-mails à leurs cibles, ils envoient également des SMS, les appellent par téléphone, les contactent sur les réseaux sociaux, etc. Les modèles d'IA générative peuvent permettre aux acteurs malveillants de créer les contenus dont ils ont besoin, qu'il s'agisse de textes d'e-mails ou de deepfakes de personnes de confiance. Cet article sur le phishing multicanal explique comment la sécurité Zero Trust peut aider les entreprises à se défendre contre de telles campagnes.
+
+Comment Cloudflare aide-t-elle les entreprises à se défendre contre les attaques de phishing ?
+Une attaque par phishing (ou hameçonnage) peut reposer sur différents vecteurs d'attaque, mais l'un des plus importants est le courrier électronique. De nombreux fournisseurs de messagerie tentent de bloquer automatiquement les e-mails de phishing, mais il arrive qu'ils parviennent tout de même aux utilisateurs ; pour cette raison, la sécurité du courrier électronique constitue une préoccupation importante.
+
+Heureusement, il existe de nombreux signes révélateurs qui indiquent qu'un e-mail fait peut-être partie d'une attaque par phishing. Découvrez comment identifier un e-mail de phishing.
+
+Par ailleurs, le service Cloudflare Email Security offre une protection avancée contre le phishing. Il parcourt Internet et examine les infrastructures de phishing afin d'identifier précocement les campagnes d'attaque. Découvrez le fonctionnement du service Cloudflare Email Security.
+Mots-clés: phishing, hameçonnage, social engineering, email, sécurité
+Catégorie: Menaces humaines
+Niveau: Débutant

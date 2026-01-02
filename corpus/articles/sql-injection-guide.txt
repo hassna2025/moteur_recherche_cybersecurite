@@ -1,0 +1,87 @@
+Titre: Guide complet sur l'injection SQL
+Source: Cloudflare Learning
+Date: 2024
+URL: https://www.cloudflare.com/fr-fr/learning/security/threats/sql-injection/
+Qu'est-ce que l'injection SQL (SQi) ?
+L'injection en langage de requête structurée (SQL*) est une technique d'injection de code utilisée pour modifier ou récupérer des données dans des bases de données SQL. En insérant des instructions SQL spécialisées dans un champ de saisie, un pirate est capable d'exécuter des commandes permettant de récupérer des données dans la base de données, de détruire des données sensibles ou d'adopter d'autres comportements de manipulation.
+
+Avec une exécution correcte des commandes SQL, l'utilisateur non autorisé peut usurper l'identité d'un utilisateur plus privilégié, se faire passer lui-même ou les autres pour des administrateurs de base de données, altérer les données existantes, modifier les transactions et les soldes, et récupérer et/ou détruire toutes les données du serveur.
+
+Dans l'informatique moderne, l'injection SQL se produit généralement sur Internet en envoyant des requêtes SQL malveillantes aux paramètres de l'API fourni par un site web ou un service (plus d'informations à ce sujet plus loin). Dans sa forme la plus sévère, l'injection SQL peut permettre à un pirate d'accéder à la racine d'une machine, ce qui lui donne un contrôle total.
+
+*SQL est un langage de programmation utilisé pour la maintenance de la plupart des bases de données.
+
+Comment fonctionne une attaque par injection SQL ?
+Imaginez une salle d'audience dans laquelle un homme nommé Bob est en procès et est sur le point de comparaître devant un juge. Lorsqu'il remplit des documents avant le procès, Bob écrit son nom comme « Bob est libre de partir ». Lorsque le juge arrive à son affaire et lit à haute voix « A présent, appelons Bob est libre de partir », l'huissier laisse Bob partir parce que le juge l'a dit.
+
+Bien qu'il existe des variétés légèrement différentes de SQLi, la vulnérabilité principale est essentiellement la même : un champ de requête SQL qui est censé être réservé à un type particulier de données, comme un nombre, se voit plutôt transmettre des informations inattendues, comme une commande. La commande, lorsqu'elle est exécutée, franchit les limites prévues, ce qui permet un comportement potentiellement malveillant. Un champ de requête est généralement rempli à partir de données saisies dans un formulaire sur une page web.
+
+Examinons une comparaison simple entre les instructions SQL normales et malveillantes :
+
+Requête SQL normale :
+Dans cette requête SQL normale, la chaîne studentId est passée dans une instruction SQL. L'objectif est de rechercher dans la liste des étudiants un étudiant qui correspond au studentId saisi. Une fois trouvé, l'enregistrement de cet étudiant sera renvoyé. En termes simples, la commande dit « allez trouver cet utilisateur et donnez-moi ses données ».
+
+Le code pourrait ressembler à quelque chose comme ceci :
+
+studentId = getRequestString(« studentId ») ;
+lookupStudent = « SELECT * FROM students WHERE studentId =  » + studentId
+   
+Si un étudiant saisit un identifiant d'étudiant de 117 dans un formulaire de page web intitulé "Veuillez fournir votre numéro d'identifiant d'étudiant
+
+champ de formulaire normal
+la requête SQL résultante ressemblera à :
+
+SELECT * FROM students WHERE studentId = 117 ;
+Cette commande renvoie l'enregistrement de l'étudiant en question avec un studentId, ce que le développeur qui a écrit l'API s'attend à voir se produire.
+
+Requête d'injection SQL :
+Dans cet exemple, un pirate saisit plutôt une commande SQL ou une logique conditionnelle dans le champ de saisie, il saisit un numéro d'identification d'étudiant de :
+
+Exemple d'injection SQL dans un champ de formulaire
+Alors que normalement la requête recherchait l'identifiant correspondant dans la table de la base de données, elle recherche maintenant un identifiant ou teste si 1 est égal à 1. Comme on peut s'y attendre, l'énoncé est toujours vrai pour chaque étudiant de la colonne et, par conséquent, la base de données renvoie toutes les données de la table des étudiants à l'attaquant qui effectue la requête.
+
+SELECT * FROM students WHERE studentId = 117 OR 1=1;
+Infographie sur l'injection SQL
+SQLi fonctionne en ciblant une interface de programmation d'application ou API vulnérable. Une API est dans ce cas l'interface logicielle par laquelle un serveur reçoit et répond aux demandes.
+
+Il existe des outils couramment utilisés qui permettent à un pirate d'effectuer une recherche automatique sur un site web à la recherche de formulaires, puis de tenter de saisir diverses requêtes SQL susceptibles de générer une réponse que les développeurs de logiciels du site web n'avaient pas prévue afin d'exploiter la base de données.
+
+Les injections SQL sont faciles à mettre en œuvre et, fait intéressant, assez faciles à prévenir grâce aux bonnes pratiques de développement. La réalité est plus sombre, car les délais serrés, les développeurs inexpérimentés et le code existant entraînent souvent une qualité de code et des pratiques de sécurité variables. Un seul champ vulnérable sur un formulaire ou aux paramètres de l'API sur un site web ayant accès à une base de données peut suffire à exposer une vulnérabilité.
+
+Comment prévenir une attaque par injection SQL ?
+Il existe plusieurs méthodes pour réduire le risque d'une violation des données due à l'injection SQL. La meilleure pratique consiste à utiliser plusieurs stratégies. Examinons quelques-unes des mises en œuvre les plus courantes :
+
+Utilisation d'énoncés préparés (avec des requêtes paramétrées) - Cette méthode d'assainissement des entrées de la base de données consiste à forcer les développeurs à définir d'abord tout le code SQL, puis à ne transmettre que des paramètres spécifiques à la requête SQL ; les données saisies se voient explicitement attribuer une portée limitée qu'elles ne peuvent pas dépasser. Cela permet à la base de données de faire la distinction entre les données qui sont entrées et le code qui doit être exécuté, quel que soit le type de données fournies dans le champ de saisie. Certaines bibliothèques de mappage objet-relationnel (ORM) sont couramment utilisées à cette fin, car certaines versions assainissent automatiquement les entrées de la base de données.
+Éviter toute donnée fournie par l'utilisateur - Lors de l'écriture de SQL, des caractères ou des mots spécifiques ont une signification particulière. Par exemple, le caractère ‘*’ signifie « any » et le mot « OR » est un conditionnel. Pour contourner les utilisateurs qui saisissent ces caractères accidentellement ou par malveillance dans une requête API de la base de données, il est possible d'éviter les entrées fournies par l'utilisateur. Éviter un caractère est la façon de dire à la base de données de ne pas l'analyser comme une commande ou un conditionnel, mais de le traiter comme une entrée littérale.
+Utilisation de procédures stockées - Bien qu'elles ne constituent pas une stratégie de sécurité solide en soi, les procédures stockées peuvent contribuer à limiter le risque associé à l'injection SQL. En limitant correctement les permissions du compte de base de données exécutant des requêtes SQL, même le code d'application non robuste qui est vulnérable à l'injection SQL ne disposera pas des permissions nécessaires pour manipuler des tables de base de données non liées. Les procédures stockées peuvent également vérifier le type de paramètres d'entrée, empêchant la saisie de données qui violent le type pour lequel le champ est conçu. Dans les cas où les requêtes statiques sont insuffisantes, les procédures stockées sont généralement à éviter.
+Appliquer le principe du moindre privilège - En règle générale, dans tous les cas où un site web doit utiliser le SQL dynamique, il est important de réduire l'exposition à l'injection SQL en limitant les autorisations au strict nécessaire pour l'exécution des requêtes pertinentes. Dans sa forme la plus évidente, cela signifie qu'un compte administratif ne doit en aucun cas exécuter des commandes SQL à la suite d'un appel API provenant d'une requête non autorisée. Bien que les procédures stockées soient mieux utilisées pour les requêtes statiques, l'application du principe du moindre privilège peut contribuer à réduire les risques des requêtes SQL dynamiques.
+Qu'est-ce qu'une attaque par injection SQL composée ?
+Afin de contourner les mesures de sécurité, des pirates astucieux mettent parfois en œuvre des attaques multi vecteurs contre un site Web ciblé. Si une attaque unique peut être atténuée, elle peut aussi devenir le centre d'attention des administrateurs de bases de données et des équipes de sécurité de l'information. Les attaques DDoS, le détournement de DNS et d'autres méthodes de perturbation sont parfois utilisées comme diversion pour mettre en œuvre des attaques par injection SQL de grande envergure. Par conséquent, une stratégie globale d'atténuation des menaces offre le plus large éventail de protection. Le pare-feu des applications web de Cloudflare, l'atténuation des attaques DDoS et la sécurité DNS constituent les éléments essentiels d'une stratégie de sécurité globale.
+
+FAQ
+Qu'est-ce que l'injection SQL (SQLi) ?
+L'injection SQL est un type de cyberattaque au cours de laquelle les attaquants insèrent des commandes SQL malveillantes dans des champs de saisie. Si les commandes sont exécutées, les attaquants peuvent manipuler ou extraire des informations d'une base de données sans autorisation. En termes plus simples, une injection SQL se produit lorsque des attaquants soumettent du code exécutable à des endroits où une application attend des données ordinaires.
+
+Comment fonctionne une attaque par injection SQL ?
+Les attaquants saisissent une commande SQL dans un champ de formulaire. Une fois le formulaire soumis, le backend de l'application reçoit la commande et l'exécute effectivement. Cela génère une réponse ou une action que les développeurs de l'application n'avaient pas prévue : les attaquants peuvent utiliser l'injection SQL pour obtenir des informations confidentielles d'une base de données ou en modifier le contenu.
+
+Que peut-il se passer si une attaque par injection SQL réussit ?
+Une injection SQL réussie peut permettre aux attaquants d'usurper des identités d'utilisateurs, d'obtenir des privilèges administratifs, de modifier ou de supprimer des données, de récupérer toutes les données du serveur, ou encore d'obtenir un accès à la racine de la machine.
+
+Quelles sont les stratégies efficaces pour prévenir les injections SQL ?
+Les stratégies de prévention des injections SQL comprennent l'utilisation d'instructions préparées, la neutraliser des caractères spéciaux dans les entrées utilisateur, la mise en œuvre de procédures stockées et l'application du principe du moindre privilège pour garantir que seules les autorisations nécessaires sont accordées.
+
+Que sont les instructions préparées et comment aident-elles à prévenir les injections SQL ?
+Les instructions préparées séparent le code SQL des entrées utilisateur en précompilant le code SQL. Cela empêche les attaquants d'injecter du code malveillant, car la base de données traite les entrées comme des données et non comme des commandes exécutables.
+
+Pourquoi est-il important de neutraliser les caractères spéciaux dans les entrées utilisateur pour empêcher l'injection SQL ?
+La neutralisation des caractères spéciaux dans les entrées utilisateur garantit que les caractères spéciaux sont traités comme du texte brut et non comme une partie d'une commande SQL, ce qui réduit le risque que les entrées utilisateur soient interprétées comme des instructions exécutables.
+
+Comment les procédures stockées peuvent-elles aider à réduire le risque d'injection SQL ?
+Les procédures stockées peuvent restreindre les types et la portée des opérations de base de données. Lorsqu'elles sont conçues correctement, elles limitent ce que le code injecté peut faire ; elles ne constituent toutefois pas, à elles seules, une défense complète.
+
+Que signifie appliquer le principe du moindre privilège dans le contexte de la prévention des injections SQL ?
+L'application du principe du moindre privilège signifie limiter les autorisations des comptes de base de données à ce qui est strictement nécessaire. Cela minimise les dommages potentiels si un attaquant exploite une vulnérabilité d'injection SQL.
+Mots-clés: SQL, injection, sécurité web, base de données, OWASP, vulnérabilité
+Catégorie: Sécurité applicative
+Niveau: Intermédiaire

@@ -1,0 +1,138 @@
+Titre: Forensic : focus sur l'analyse suite à une attaque informatique
+Source: ANSSI + ressources spécialisées
+Date: 2024
+URL:https://guardia.school/boite-a-outils/focus-sur-lanalyse-forensic.html
+L’analyse forensique, ou digital forensic en anglais, est une méthode d’investigation visant à examiner un système d’information après une cyberattaque. Son objectif principal est de reconstituer le déroulement de l’intrusion et de collecter des preuves numériques fiables pouvant servir lors d’une action interne ou d’une procédure judiciaire.
+
+Pour y parvenir, des experts en cybersécurité analysent des données brutes ou altérées, en veillant à préserver leur intégrité, afin de retracer les événements et comprendre les techniques utilisées par les attaquants. Ce processus est essentiel pour identifier les failles, améliorer la sécurité et soutenir des actions légales si nécessaire.
+Qu’est-ce que l’analyse forensique ou Forensic ?
+Étymologiquement, le mot « forensic » vient du mot latin « Forum », qui fait référence à « une place publique » ou encore un « lieu de jugement ».
+
+Le forensic dans la sécurité informatique
+Dans le secteur de la cybersécurité, le Forensic est un examen méthodique et approfondi des actes effectués sur un système informatique après une attaque (vol de données, piratage, etc.)
+
+C’est une sorte d’investigation qui peut être réalisée pour avoir des preuves sur des systèmes ou encore des supports de sauvegarde d’informations comme les ordinateurs, les appareils mobiles, les bases de données, une application, un disque dur, des serveurs, une carte SD ou des clés USB.
+
+Si l’analyse est menée correctement, elle permet de détecter des preuves, sous certaines conditions. Souvent, on peut trouver les preuves suivantes :
+
+Sites internet visités ;
+Documents sensibles ou confidentiels supprimés ;
+Programmes malveillants exécutés ;
+Tentatives de suppression de logs ;
+Connexions réussies ;
+Mots de passe volés ;
+Messages envoyés ;
+Appels reçus.
+Forensic dans la sécurité informatique
+
+L’analyse forensique permet de confirmer ou d’infirmer les hypothèses initiales en corrélant les preuves collectées, comme le vol de données ou le téléchargement illicite, pour reconstituer l’incident avec précision.
+
+Les techniques utilisées dans le Forensic
+
+Les techniques utilisées pour le forensic
+Une fois l’incident détecté, l’investigation numérique forensic consiste à se servir des méthodologies éprouvées pour obtenir les données, analyser les journaux système des dispositifs et tirer des conclusions.
+
+En général, l’analyse utilise les techniques suivantes :
+
+Récupération des données : Extraction des fichiers supprimés, logs réseau ou archives sur tous les supports informatiques. Cette étape regroupe les preuves nécessaires pour établir une plainte ou documenter l’incident.
+Traitement et analyse : Classement, tri, visualisation et corrélation des données collectées, afin de rechercher les traces laissées par les attaquants. Les informations temporelles sont essentielles pour construire une timeline détaillée des événements.
+Analyse et conclusion : Étude approfondie de l’intrusion, incluant l’interprétation des données et la compréhension des méthodes utilisées. La timeline permet de contextualiser chaque étape de l’attaque pour en tirer des conclusions précises.
+Quelles sont les différentes approches du forensic ?
+On peut réaliser le forensic selon 3 manières différentes :
+
+L’analyse à froid ou dead forensics
+Cette approche consiste à copier toutes les données du système d’information pour ensuite les analyser sur un autre support.
+
+C’est une technique qui permet d’analyser en profondeur tout en évitant d’engendrer d’autres impacts sur le système existant.
+
+L’analyse à chaud ou live forensics
+Dans cette analyse, il est question de récupérer les renseignements du système d’information pour les installer dans un système en cours de fonctionnement.
+
+Il s’agit d’une solution qui sert à analyser les processus actifs du système ainsi que sa mémoire vive.
+
+L’analyse en temps réel
+Cette solution permet de capturer le trafic réseau pour l’analyse, la détection et la compréhension de l’attaque sur le réseau.
+
+QUELLES SONT LES DIFFÉRENTES APPROCHES DU FORENSIC ?
+
+Forensic : différentes méthodes pour des objectifs distincts
+On peut effectuer deux types de forensic selon l’objectif :
+
+Le forensic judiciaire
+L’objectif de cette investigation des traces informatiques est de démontrer des preuves et des faits de l’intrusion. Ainsi, l’entreprise victime de l’attaque pourra établir un dossier et procurer des arguments fondés sur des constats à un délégué de la loi.
+
+Le plus souvent, elle peut déposer les preuves auprès d’un avocat, un juriste ou encore un légiste. En effet, l’analyse après une intrusion permet de suivre l’action en justice (procès, dépôt de plainte, etc.).  
+
+Plus précisément, l’analyse forensique est identique dans les deux techniques. La différence réside surtout dans le type de renseignement et la présentation constituant le rapport.
+
+Le forensic judiciaire
+
+Le forensic technique
+Cette solution permet de récupérer des traces informatiques comme les disques, les logs ou encore les journaux. Cela permet de déterminer les raisons pour lesquelles le système ou l’application de l’organisation a été compromis. Il pourrait s’agir notamment d’une vulnérabilité qui aurait été exploitée par un attaquant, d’un vol d’informations en interne, d’une erreur humaine, etc.
+
+Dans ce cas, la démarche est réalisée dans le cadre privé de correction. Cela permet surtout d’améliorer de manière continue la sécurité du système d’information. Le résultat des recherches est alors retranscrit et formalisé dans cette vision.
+Les différentes étapes du forensic
+L’investigation numérique se déroule autour de 4 points principaux :
+
+L’acquisition
+Pendant cette étape, les investigateurs se chargent de la perquisition des supports numériques à analyser s’ils sont mandatés. Dans le cas contraire, ils sont chargés de recevoir les supports. Ces derniers seront par la suite identifiés de manière précise et photographier.
+
+Ils peuvent aussi capturer la RAM ou mémoire vive du dispositif s’il fonctionne lors de l’acquisition. La capture servira pour une analyse « live forensics ».
+
+Les analystes doivent aussi copier et dupliquer les mémoires persistantes, surtout les disques durs. Ils sont indispensables pour effectuer une analyse « dead forensics ». Il important de réaliser des copies des systèmes afin de ne pas altérer les preuves, de maintenir leur intégrité et de pouvoir présenter une méthode d’analyse qui soit reproductible.
+
+Une fois le disque copié et dupliqué, il est conseillé de contrôler tout le disque dur et s’assurer qu’il correspond parfaitement à la source. Pour ce faire, il faut comparer l’empreinte du disque (hash) d’origine avec toutes les copies.
+
+Étapes du Forensic
+
+L’investigation
+Cette étape est vraiment importante, car c’est dans cette partie que les investigateurs mènent des fouilles pour répondre aux questions des demandeurs. Les analyses procèdent souvent comme suit :
+
+Mise en place d’une timeline des événements ;
+Identifier un squelette de scénario via les données récupérées ;
+Créer de nouveaux scénarios à partir de l’hypothèse initiale ;
+Déduire une suite logique d’événements.
+La remédiation
+Cette phase se produit en fonction du contexte. Par exemple, elle n’est pas indispensable pour une enquête judiciaire sur un crime.
+
+Par contre, en cas d’infection par un logiciel malveillant, il est impératif de corriger le vecteur d’infection afin d’éviter un nouvel incident du même type, et de garantir que les attaquants n’ont plus de moyen de persistance au sein du SI.
+
+La rédaction du rapport
+C’est une étape clé menée par les analystes, qui compilent de manière claire et structurée les traces numériques et les réponses aux questions initiales formulées lors de l’enquête.
+
+Ce rapport doit être à la fois précis et compréhensible pour permettre aux décideurs de prendre des actions éclairées, en particulier dans un contexte judiciaire. Outre la documentation des faits, il peut inclure des recommandations de mesures de protection pour renforcer la sécurité et prévenir de futures incidents similaires. Un rapport bien rédigé est essentiel pour établir des responsabilités et soutenir les actions légales.
+
+D’autres cas d’application de l’analyse forensique
+D’AUTRES CAS D’APPLICATION DE L’ANALYSE FORENSIQUE
+
+Souvent, la science forensique est connue dans le cadre de la sécurité de l’information. Néanmoins, elle s’applique aussi dans d’autres domaines et est réalisée par des professionnels très variés.
+
+La police scientifique
+En moyenne, 40 % des diplômés en science forensique œuvrent dans la section d’investigation et scientifique de la police.
+
+En effet, cette organisation se sert du forensic pour améliorer l’administration de leurs prélèvements dans le cadre d’une affaire pénale et criminelle, à savoir, la pertinence d’une analyse, la gestion des liens entre les affaires, etc.
+
+On peut aussi faire usage de cette analyse pour un renseignement criminel.
+
+Les laboratoires
+Des laboratoires offrent aussi des services en science forensic. Particulièrement les laboratoires de médecine légale et des sciences judiciaires, les laboratoires des gendarmeries ou des laboratoires en sûreté.
+
+Certains dans le secteur privé proposent également ses prestations d’investigations, d’identification et d’élaboration de données.
+
+C’est aussi le cas pour les services de labo de surveillance, d’investigation et d’inspection dans le domaine des accidents complexes, des activités litigieuses et des sinistres.
+
+Les tribunaux et administratifs
+20% des spécialistes en forensic travaillent dans des administrations publiques. Dans certaines régions, les tribunaux utilisent ce type d’analyse, notamment les juges d’application des peines et d’instructions.
+
+L’analyse forensique est utilisée dans ce secteur pour effectuer l’interrogation des personnes, pour l’analyse des interrogatoires ou encore pour la coordination des étapes de la procédure judiciaire.
+
+Ces domaines font également appel aux experts et ingénieurs en informatique pour trouver des solutions aux problèmes de sécurité informatique.
+
+Les financiers et les architectes
+Cette analyse se révèle aussi être importante dans le secteur de la finance. Les consultants forensic travaillent dans les cabinets et les analystes au sein des organisations internationales tels que l’OCDE (Organisation de Coopération et de Développement Economiques)
+
+Les auditeurs forensic collaborent avec des institutions comme l’AMF (Autorité des Marchés Financiers). Des ingénieurs de la police scientifique et des agents de renseignements font d’ailleurs usage de cette analyse dans le cadre de leur travail.
+
+Ces analystes sont recrutés davantage au sein de ces institutions et de ces organisations pour leurs compétences particulières.
+
+Les architectes utilisent aussi ce type d’investigation pour l’analyse des traces des conflits, à titre d’exemple dans les zones de guerre.
